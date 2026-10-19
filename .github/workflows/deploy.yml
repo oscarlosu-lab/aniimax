@@ -2,6 +2,8 @@ name: Deploy to GitHub Pages
 
 on:
   push:
+    branches:
+      - main
     tags:
       - 'v*'  # Trigger on version tags like v0.3.0, v1.0.0, etc.
   workflow_dispatch:
@@ -29,7 +31,7 @@ jobs:
           target: wasm32-unknown-unknown
 
       - name: Install wasm-pack
-        run: cargo install wasm-pack
+        run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 
       - name: Build WASM
         run: wasm-pack build --target web --out-dir web/pkg
