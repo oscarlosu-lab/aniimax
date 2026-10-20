@@ -27,10 +27,9 @@ Updated for the full release, with a joint LP-based facility-allocation engine f
 - **Recipe Reference Page**: Every recipe in the game data, browsable by facility, independent of what you own
 - **Aniimo Recommendations**: Every plan is solved for the Best Aniimo (the level you have of each ability, with each facility's personality) and the Minimum (the lowest ability level each recipe accepts), and lists the team it needs: each ability, level and personality, and how many it takes to keep up with the work (Farmland and Woodland jobs included), checked against how many Aniimo your RV level allows. An Aniimo carries four personalities at once, one from each opposed pair (I/E Instinctive-Energetic, N/S Nimble-Practical, F/T Faithful-Tenacious, P/J Playful-Judicious), so one can hold the bonus at several facilities as long as none of them want opposites and it has hours to spare. Times follow the game's Efficiency: 100% at the level a recipe needs (one workload a second at a processor, 1.25 or 1.5 on a gathering facility's level-2 or level-3 recipe); at a processor, 300% one level above, then +100% per level; at a gathering facility each level above adds half a workload a second, reading as +50% on a level-1 recipe, +40% on a level-2 one and +33% on a level-3 one; the personality bonus adds 20%
 - **My Aniimo**: Plan with the Aniimo you actually have: list each kind with how many, its abilities and levels, and its personalities. Each works what its abilities allow for the hours it has, environment buildings and resident facilities take one Aniimo each, and the plan shows what every Aniimo does
-- **Opportunities**: After each plan, the changes within your reach (a recipe to unlock, a higher Aniimo level, and in Advanced mode a module or facility) are solved and ranked by how much they'd improve it
-- **Homeland Layout**: Places every facility within your open plots so the busiest are nearest the Storage Unit, keeping each environment building's plots in its coverage and other crops out of it
-- **Progress Card**: Shows each solve as it runs and whether it proved its answer the best
-- **Item Upgrade Modules**: Support for module-unlocked items (Ecological, Kitchen, Resource Detector, Crafting)
+- **Homeland Layout**: Places every facility within your open plots so the busiest are nearest the Storage Unit (supports multiple Storage Units scaling with RV level), keeping each environment building's plots in its coverage and other crops out of it
+- **Multi-Storage Unit Support**: Unlocks up to 5 Storage Units depending on RV level (RV 1-4: 1, RV 5-7: 2, RV 8-11: 3, RV 12-15: 4, RV 16+: 5), routing facilities to their nearest storage unit
+- **Internationalization**: Full language support with runtime switching between English, Spanish (`es`), Russian (`ru`), and Traditional Chinese (`zh-TW`)
 
 **CLI / library**
 - **Time or Energy Optimization**: Fastest path, or best profit per energy unit
@@ -582,7 +581,7 @@ cargo doc --open
 
 ### Languages
 
-The web language selector and CLI `--language en|ru` use English by default. English UI text is the source; `web/locales/en.json` inventories its phrases for translation checks, and `web/locales/ru.json` maps them to Russian. To add a language, add a matching JSON catalog and register its code and native label in `web/i18n.js`. Keep facility, item, and solver identifiers in English; translation happens only when results are displayed. Run `node tests/locale.test.mjs` to check catalog parity and switching.
+The web language selector and CLI `--language en|ru` use English by default. English UI text is the source; `web/locales/en.json` inventories its phrases for translation checks, `web/locales/es.json` maps them to Spanish, and `web/locales/ru.json` maps them to Russian. To add a language, add a matching JSON catalog and register its code and native label in `web/i18n.js`. Keep facility, item, and solver identifiers in English; translation happens only when results are displayed. Run `node tests/locale.test.mjs` to check catalog parity and switching.
 
 Traditional Chinese uses the code `zh-TW` in the web app and `--language zh-tw` in the CLI. The CLI also accepts `zh-TW` and `ZH-TW`. Its catalog is `web/locales/zh-TW.json`. Its own rules are in a zh-TW block in `web/i18n.js` and in `src/locale/zh_tw.rs`, so the other languages do not change. A phrase that the zh-TW catalog does not hold shows in English. Run `node tests/locale_zh_tw.test.mjs` and `cargo test --test zh_tw_locale_tests --test cli_language_tests` to check zh-TW.
 

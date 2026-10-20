@@ -357,3 +357,12 @@ export function simpleSetup(homeLevel) {
     return { facilities, modules };
 }
 
+// Storage units unlocked at each RV level.
+export function defaultStorageUnits(rvLevel) {
+    const lvl = Number(rvLevel) || 1;
+    if (lvl >= 16) return 5;
+    if (lvl >= 12) return 4;
+    if (lvl >= 8) return 3;
+    if (lvl >= 5) return 2;
+    return 1;
+}

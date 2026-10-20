@@ -1,5 +1,5 @@
 // Register a language here and add its JSON catalog; English phrases are the source keys.
-const languages = { en: 'English', ru: 'Русский', 'zh-TW': '繁體中文' };
+const languages = { en: 'English', es: 'Español', ru: 'Русский', 'zh-TW': '繁體中文' };
 const catalogs = { en: {} };
 const templates = {};
 let language = 'en';
